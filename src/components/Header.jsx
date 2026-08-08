@@ -37,10 +37,11 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3.5 group">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white group-hover:bg-emerald-950 transition-colors shadow-sm">
-              <span className="font-serif text-xl font-bold tracking-tight">
+            <div className="w-12 h-12 rounded-xl  flex items-center justify-center text-white group-hover:bg-emerald-150 transition-colors shadow-sm">
+              {/* <span className="font-serif text-xl font-bold tracking-tight">
                 D
-              </span>
+              </span> */}
+              <img src="/logo.png" alt="Daisen Wealth Partners Logo" className="w-12 h-12 object-contain" />
             </div>
 
             <div>
