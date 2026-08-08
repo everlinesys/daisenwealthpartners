@@ -1,10 +1,6 @@
-import {
-  ArrowUpRight,
-  Mail,
-  MessageCircle,
- 
-} from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, ShieldCheck, ExternalLink } from "lucide-react";
 import { FaYoutube } from "react-icons/fa";
+
 const services = [
   "Mutual Fund Investments",
   "SIP Planning",
@@ -23,38 +19,33 @@ const resources = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#04121E] text-white">
-
-      {/* CTA */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-5 lg:px-8 py-20">
+    <footer className="bg-slate-950 text-white selection:bg-emerald-800 selection:text-white">
+      {/* High-Impact CTA Banner */}
+      <div className="border-b border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-10 h-px bg-[#C9A86A]" />
-              <span className="text-[#C9A86A] text-xs uppercase tracking-[0.25em]">
-                Your Financial Journey
-              </span>
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/40 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Your Financial Journey</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-              Let's build your
-              <span className="text-[#C9A86A] italic">
-                {" "}financial future.
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.15] text-slate-100 font-medium">
+              Let's build your{" "}
+              <span className="text-emerald-400 italic font-normal">
+                financial future.
               </span>
             </h2>
 
-            <p className="mt-6 text-white/55 max-w-xl leading-7">
-              Whether you're starting your first SIP or planning for
-              long-term wealth creation, we're here to guide you at every
-              stage of your investment journey.
+            <p className="mt-6 text-slate-400 max-w-xl leading-relaxed text-base font-light">
+              Whether you're starting your first SIP or planning for long-term wealth creation, we offer personalized guidance at every milestone.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-[#C9A86A] text-[#071A2B] px-6 py-3.5 rounded-full font-medium"
+                className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-7 py-3.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-950/50"
               >
-                Book a Consultation
+                <span>Book a Consultation</span>
                 <ArrowUpRight size={17} />
               </a>
 
@@ -62,93 +53,87 @@ export default function Footer() {
                 href="https://wa.me/918301808509"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-white/15 px-6 py-3.5 rounded-full hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-200 px-7 py-3.5 rounded-xl text-sm font-medium transition-all"
               >
-                <MessageCircle size={17} />
-                WhatsApp Us
+                <MessageCircle size={17} className="text-emerald-400" />
+                <span>WhatsApp Us</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-5 lg:px-8 py-16">
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-
-          {/* Brand */}
+      {/* Main Grid Content */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand Column */}
           <div className="lg:col-span-1">
-
-            <a href="#home" className="inline-block">
-              <div className="text-2xl font-serif">
+            <a href="#home" className="inline-block group">
+              <div className="text-2xl font-serif font-bold text-slate-100 group-hover:text-emerald-400 transition">
                 Daisen
               </div>
-              <div className="text-[#C9A86A] text-[10px] tracking-[0.25em] uppercase mt-1">
+              <div className="text-emerald-500 text-[10px] tracking-[0.25em] font-semibold uppercase mt-0.5">
                 Wealth Partners
               </div>
             </a>
 
-            <p className="mt-6 text-sm leading-6 text-white/45">
-              Helping individuals, families and NRIs build long-term wealth
-              through goal-based mutual fund investing.
+            <p className="mt-5 text-xs leading-relaxed text-slate-400 font-light">
+              Helping individuals, families, and NRIs build sustainable long-term wealth through disciplined, goal-based mutual fund portfolios.
             </p>
 
             <div className="mt-6 space-y-3">
-
               <a
                 href="mailto:daisenwealthpartners@gmail.com"
-                className="flex items-center gap-3 text-sm text-white/60 hover:text-white"
+                className="flex items-center gap-3 text-xs text-slate-400 hover:text-emerald-400 transition"
               >
-                <Mail size={16} />
-                daisenwealthpartners@gmail.com
+                <Mail size={15} className="text-slate-500 shrink-0" />
+                <span>daisenwealthpartners@gmail.com</span>
               </a>
 
               <a
                 href="https://wa.me/918301808509"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 text-sm text-white/60 hover:text-white"
+                className="flex items-center gap-3 text-xs text-slate-400 hover:text-emerald-400 transition"
               >
-                <MessageCircle size={16} />
-                +91 83018 08509
+                <MessageCircle size={15} className="text-slate-500 shrink-0" />
+                <span>+91 83018 08509</span>
               </a>
-
             </div>
           </div>
 
-          {/* Services */}
+          {/* Services Links */}
           <div>
-            <h3 className="text-sm font-medium text-white mb-5">
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-5">
               Services
             </h3>
 
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {services.map((service) => (
                 <li key={service}>
                   <a
                     href="#services"
-                    className="text-sm text-white/45 hover:text-[#C9A86A] transition"
+                    className="text-xs text-slate-400 hover:text-emerald-400 transition flex items-center gap-1 group"
                   >
-                    {service}
+                    <span>{service}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources Links */}
           <div>
-            <h3 className="text-sm font-medium text-white mb-5">
-              Resources
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-5">
+              Planning & Tools
             </h3>
 
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {resources.map((resource) => (
                 <li key={resource}>
                   <a
                     href="#planning-tools"
-                    className="text-sm text-white/45 hover:text-[#C9A86A] transition"
+                    className="text-xs text-slate-400 hover:text-emerald-400 transition"
                   >
                     {resource}
                   </a>
@@ -157,74 +142,83 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Founder */}
+          {/* Leadership & Credentials */}
           <div>
-            <h3 className="text-sm font-medium text-white mb-5">
-              Daisen Joseph
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-5">
+              Key Contact
             </h3>
 
-            <p className="text-sm text-white/45 leading-6">
-              Founder & Managing Consultant
-            </p>
+            <div className="bg-slate-900/60 rounded-xl p-4 border border-slate-800/80">
+              <p className="text-sm font-medium text-slate-100">Daisen Joseph</p>
+              <p className="text-xs text-emerald-400 mt-0.5 font-medium">
+                Founder & Managing Consultant
+              </p>
 
-            <p className="mt-3 text-xs text-white/35 leading-5">
-              M.Com (Finance & Marketing)
-              <br />
-              NISM Certified
-            </p>
+              <div className="mt-3 pt-3 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">
+                <p>• M.Com (Finance & Marketing)</p>
+                <p>• NISM Series V-A Certified</p>
+              </div>
 
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 mt-6 text-sm text-[#C9A86A]"
-            >
-              Meet Daisen
-              <ArrowUpRight size={15} />
-            </a>
+              <a
+                href="#about"
+                className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition"
+              >
+                <span>Read Profile</span>
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
 
-            <div className="mt-7 flex gap-3">
+            <div className="mt-5 flex items-center gap-3">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[#C9A86A] transition"
-                aria-label="YouTube"
+                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-800 transition"
+                aria-label="YouTube Channel"
               >
-                <FaYoutube size={17} />
+                <FaYoutube size={16} />
               </a>
 
               <a
                 href="https://wa.me/918301808509"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[#C9A86A] transition"
-                aria-label="WhatsApp"
+                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-800 transition"
+                aria-label="WhatsApp Direct"
               >
-                <MessageCircle size={17} />
+                <MessageCircle size={16} />
               </a>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom */}
-        <div className="mt-16 pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4">
+        {/* Regulatory Disclosure Banner (Crucial for AMFI/SEBI Compliance) */}
+        <div className="mt-14 pt-6 border-t border-slate-800/80">
+          <div className="bg-slate-900/40 rounded-xl p-4 border border-slate-800/60 text-[11px] text-slate-400 leading-relaxed space-y-2">
+            <div className="flex items-center gap-2 text-emerald-400 font-medium">
+              <ShieldCheck size={14} />
+              <span>AMFI Registered Mutual Fund Distributor</span>
+            </div>
+            <p>
+              <strong className="text-slate-300">Disclaimer:</strong> Mutual fund investments are subject to market risks, read all scheme related documents carefully before investing. Past performance is not an indicator of future returns. Daisen Wealth Partners acts as a distributor of mutual funds and receives commission from AMCs.
+            </p>
+          </div>
+        </div>
 
-          <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} Daisen Wealth Partners. All rights reserved.
-          </p>
+        {/* Bottom Legal bar */}
+        <div className="mt-8 pt-6 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} Daisen Wealth Partners. All rights reserved.</p>
 
-          <div className="flex gap-6 text-xs text-white/30">
-            <a href="#" className="hover:text-white">
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-slate-300 transition">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-slate-300 transition">
               Terms & Conditions
             </a>
-            <a href="#" className="hover:text-white">
-              Disclaimer
+            <a href="#" className="hover:text-slate-300 transition">
+              Regulatory Disclosures
             </a>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

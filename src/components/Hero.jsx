@@ -1,49 +1,38 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import {
   ArrowUpRight,
+  ShieldCheck,
+  Globe2,
+  PieChart,
+  Award,
+  ChevronRight,
   Play,
-  Sparkles,
-  TrendingUp,
+  MessageCircle,
+  
+  Users,
 } from "lucide-react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FaYoutube } from "react-icons/fa";
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const [activeTab, setActiveTab] = useState("growth");
 
-  // Cursor position
+  // Mouse tilt effect for interactive preview card
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth cursor movement
-  const springX = useSpring(mouseX, {
-    stiffness: 80,
-    damping: 20,
-    mass: 0.5,
-  });
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 20 });
 
-  const springY = useSpring(mouseY, {
-    stiffness: 80,
-    damping: 20,
-    mass: 0.5,
-  });
-
-  // Subtle 3D movement
-  const rotateX = useTransform(springY, [-0.5, 0.5], [5, -5]);
+  const rotateX = useTransform(springY, [-0.5, 0.5], [6, -6]);
   const rotateY = useTransform(springX, [-0.5, 0.5], [-6, 6]);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
-
     const rect = containerRef.current.getBoundingClientRect();
-
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-
     mouseX.set(x);
     mouseY.set(y);
   };
@@ -53,19 +42,17 @@ export default function Hero() {
     mouseY.set(0);
   };
 
-  const fadeUp = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
+  const allocations = {
+    growth: [
+      { label: "Equity Funds", pct: "65%", color: "bg-emerald-500" },
+      { label: "Global Exposure", pct: "20%", color: "bg-teal-400" },
+      { label: "Debt & Fixed Income", pct: "15%", color: "bg-slate-300" },
+    ],
+    balanced: [
+      { label: "Equity Funds", pct: "45%", color: "bg-emerald-500" },
+      { label: "Debt & Fixed Income", pct: "40%", color: "bg-slate-400" },
+      { label: "Gold & Commodities", pct: "15%", color: "bg-amber-400" },
+    ],
   };
 
   return (
@@ -73,568 +60,264 @@ export default function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen overflow-hidden bg-[#071A2B]"
+      className="relative min-h-screen bg-[#FDFBF7] text-slate-900 overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24"
     >
-      {/* =====================================================
-          CURSOR FOLLOWING LIGHT
-      ====================================================== */}
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-emerald-100/50 blur-[120px]" />
+        <div className="absolute top-1/2 -right-20 w-[600px] h-[600px] rounded-full bg-amber-100/40 blur-[140px]" />
 
-      <motion.div
-        className="pointer-events-none absolute z-0 hidden lg:block"
-        style={{
-          left: useTransform(
-            springX,
-            [-0.5, 0.5],
-            ["15%", "85%"]
-          ),
-          top: useTransform(
-            springY,
-            [-0.5, 0.5],
-            ["15%", "85%"]
-          ),
-        }}
-      >
-        <div className="w-[420px] h-[420px] rounded-full bg-[#C9A86A]/10 blur-[120px]" />
-      </motion.div>
-
-      {/* =====================================================
-          AMBIENT BACKGROUND
-      ====================================================== */}
-
-      <div className="absolute inset-0 pointer-events-none">
-
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#C9A86A]/5 blur-[100px]" />
-
-        <div className="absolute bottom-[-300px] left-[-200px] w-[600px] h-[600px] rounded-full bg-[#163550]/40 blur-[100px]" />
-
-        {/* Grid */}
+        {/* Subtle Architectural Grid */}
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
-            `,
-            backgroundSize: "70px 70px",
+            backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
           }}
         />
-
       </div>
 
-      {/* =====================================================
-          CONTENT
-      ====================================================== */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Eyebrow / Trust Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/5 border border-slate-900/10 backdrop-blur-md mb-8"
+        >
+          <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
+            AMFI Registered Mutual Fund Distributor
+          </span>
+          <ChevronRight size={14} className="text-slate-400" />
+        </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 pt-32 lg:pt-40 pb-20">
-
-        <div className="min-h-[calc(100vh-10rem)] grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* =================================================
-              LEFT SIDE
-          ================================================== */}
-
-          <div className="relative z-10">
-
-            {/* Eyebrow */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="inline-flex items-center gap-3 mb-7"
-            >
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: 40 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-px bg-[#C9A86A]"
-              />
-
-              <span className="text-[#C9A86A] text-xs uppercase tracking-[0.25em]">
-                Daisen Wealth Partners
-              </span>
-            </motion.div>
-
-            {/* Heading */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+          {/* LEFT CONTENT COLUMN */}
+          <div className="lg:col-span-7">
             <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.08,
-                  },
-                },
-              }}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-[78px] leading-[1.02] font-serif text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl sm:text-6xl xl:text-[68px] font-serif font-normal tracking-tight text-slate-900 leading-[1.08]"
             >
-
-              <motion.span
-                variants={fadeUp}
-                className="block"
-              >
-                Invest with
-              </motion.span>
-
-              <motion.span
-                variants={fadeUp}
-                className="block text-[#C9A86A] italic"
-              >
-                purpose.
-              </motion.span>
-
-              <motion.span
-                variants={fadeUp}
-                className="block"
-              >
-                Grow with
-              </motion.span>
-
-              <motion.span
-                variants={fadeUp}
-                className="block"
-              >
-                confidence.
-              </motion.span>
-
+              Building generational wealth with{" "}
+              <span className="italic font-serif text-emerald-800 underline decoration-emerald-300 decoration-wavy decoration-1 underline-offset-8">
+                clarity
+              </span>{" "}
+              & precision.
             </motion.h1>
 
-            {/* Description */}
             <motion.p
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.35 }}
-              className="mt-7 max-w-xl text-lg leading-8 text-white/60"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl font-light leading-relaxed"
             >
-              Helping Individuals, Families & NRIs Build Long-Term Wealth
-              Through Goal-Based Mutual Fund Investing.
+              Goal-based mutual fund strategies tailored for high-net-worth individuals, families, and NRIs globally. Experience structured wealth management designed around your life milestones.
             </motion.p>
 
-            {/* Buttons */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              transition={{ delay: 0.45 }}
-              className="mt-9 flex flex-col sm:flex-row gap-4"
-            >
-
-              {/* Primary */}
-              <motion.a
-                href="/contact"
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 15px 40px rgba(201,168,106,0.18)",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center justify-center gap-3 bg-[#C9A86A] text-[#071A2B] px-7 py-4 rounded-full font-medium"
-              >
-                Start Your Investment Journey
-
-                <span className="w-7 h-7 rounded-full bg-[#071A2B]/10 flex items-center justify-center group-hover:bg-[#071A2B] group-hover:text-white transition">
-                  <ArrowUpRight size={15} />
-                </span>
-              </motion.a>
-
-              {/* Secondary */}
-              <motion.a
-                href="/investor-hub"
-                whileHover={{
-                  scale: 1.03,
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-3 border border-white/15 text-white px-7 py-4 rounded-full"
-              >
-                <span className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center">
-                  <Play size={13} fill="currentColor" />
-                </span>
-
-                Learn With Daisen
-              </motion.a>
-
-            </motion.div>
-
-            {/* Trust indicators */}
+            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.7,
-              }}
-              className="mt-14 pt-7 border-t border-white/10 grid grid-cols-3 gap-6 max-w-xl"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4"
             >
+              {/* Primary Consultation Button */}
+              <a
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-3 bg-slate-900 hover:bg-emerald-950 text-white px-7 py-4 rounded-xl font-medium text-base shadow-xl shadow-slate-900/10 hover:shadow-emerald-950/20 transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                <span>Start Portfolio Advisory</span>
+                <ArrowUpRight
+                  size={18}
+                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                />
+              </a>
 
-              <div>
-                <div className="text-2xl font-serif text-white">
-                  20+
+              {/* WhatsApp Community Button */}
+              <a
+                href="https://whatsapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 px-6 py-4 rounded-xl font-medium text-base shadow-sm transition-all duration-200"
+              >
+                <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                  <MessageCircle size={14} className="fill-current" />
                 </div>
+                <span>Join WhatsApp Group</span>
+              </a>
 
-                <div className="mt-1 text-xs text-white/40">
-                  Countries Served
+              {/* Secondary Link */}
+              <a
+                href="/investor-hub"
+                className="inline-flex items-center justify-center gap-2.5 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 px-6 py-4 rounded-xl font-medium text-base shadow-sm hover:bg-slate-50 transition-all duration-200"
+              >
+                <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
+                  <Play size={10} className="fill-current ml-0.5" />
                 </div>
-              </div>
-
-              <div>
-                <div className="text-2xl font-serif text-white">
-                  Goal
-                </div>
-
-                <div className="mt-1 text-xs text-white/40">
-                  Based Planning
-                </div>
-              </div>
-
-              <div>
-                <div className="text-2xl font-serif text-white">
-                  Long
-                </div>
-
-                <div className="mt-1 text-xs text-white/40">
-                  Term Approach
-                </div>
-              </div>
-
+                <span>Investor Hub</span>
+              </a>
             </motion.div>
 
-          </div>
-
-          {/* =================================================
-              RIGHT SIDE
-          ================================================== */}
-
-          <div className="relative hidden lg:flex justify-end">
-
+            {/* Metric Highlights */}
             <motion.div
-              style={{
-                rotateX,
-                rotateY,
-              }}
-              initial={{
-                opacity: 0,
-                scale: 0.9,
-                y: 40,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 1.1,
-                delay: 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative w-full max-w-[560px] aspect-[4/5]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-14 pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-6"
             >
-
-              {/* Outer glow */}
-              <div className="absolute -inset-5 rounded-[2.5rem] bg-[#C9A86A]/5 blur-2xl" />
-
-              {/* Main card */}
-              <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 bg-gradient-to-br from-[#163550] via-[#0B2439] to-[#061522] shadow-2xl">
-
-                {/* Decorative rings */}
-
-                <motion.div
-                  animate={{
-                    rotate: 360,
-                  }}
-                  transition={{
-                    duration: 35,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute -top-28 -right-28 w-80 h-80 rounded-full border border-[#C9A86A]/20"
-                />
-
-                <motion.div
-                  animate={{
-                    rotate: -360,
-                  }}
-                  transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute top-10 right-10 w-44 h-44 rounded-full border border-[#C9A86A]/10"
-                />
-
-                {/* Small floating dots */}
-
-                <motion.div
-                  animate={{
-                    y: [0, -12, 0],
-                    opacity: [0.4, 1, 0.4],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                  }}
-                  className="absolute top-32 left-14 w-2 h-2 rounded-full bg-[#C9A86A]"
-                />
-
-                <motion.div
-                  animate={{
-                    y: [0, 15, 0],
-                    opacity: [0.3, 0.8, 0.3],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                  }}
-                  className="absolute top-52 right-20 w-1.5 h-1.5 rounded-full bg-[#C9A86A]"
-                />
-
-                {/* Top floating card */}
-
-                <motion.div
-                  animate={{
-                    y: [0, -7, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute top-8 left-8 bg-white/[0.08] backdrop-blur-xl border border-white/10 rounded-2xl p-5"
-                >
-
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#C9A86A]/10 flex items-center justify-center">
-                      <Sparkles
-                        size={15}
-                        className="text-[#C9A86A]"
-                      />
-                    </div>
-
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-white/40">
-                        Wealth Strategy
-                      </div>
-
-                      <div className="text-sm text-white mt-1">
-                        Think Beyond Today
-                      </div>
-                    </div>
-                  </div>
-
-                </motion.div>
-
-                {/* Chart title */}
-
-                <div className="absolute top-36 left-10">
-                  <div className="text-xs text-white/35 uppercase tracking-widest">
-                    Long-Term Growth
-                  </div>
-
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-3xl font-serif text-white">
-                      Wealth
-                    </span>
-
-                    <TrendingUp
-                      size={20}
-                      className="text-[#C9A86A]"
-                    />
-                  </div>
+              <div>
+                <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-serif text-slate-900 font-medium">
+                  <span>20+</span>
+                  <Globe2 size={18} className="text-emerald-700" />
                 </div>
+                <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
+                  Countries Served
+                </p>
+              </div>
 
-                {/* Chart */}
-
-                <div className="absolute left-8 right-8 bottom-28 h-56">
-
-                  <svg
-                    viewBox="0 0 500 220"
-                    className="w-full h-full"
-                    fill="none"
-                  >
-
-                    {/* Grid */}
-                    {[50, 100, 150].map((y) => (
-                      <line
-                        key={y}
-                        x1="10"
-                        y1={y}
-                        x2="490"
-                        y2={y}
-                        stroke="white"
-                        strokeOpacity="0.05"
-                      />
-                    ))}
-
-                    {/* Area */}
-                    <motion.path
-                      d="M10 190 C80 175 100 160 150 165 C200 170 205 125 260 135 C310 145 330 95 370 105 C415 115 420 55 490 20 L490 220 L10 220 Z"
-                      fill="url(#chartGradient)"
-                      initial={{
-                        opacity: 0,
-                      }}
-                      animate={{
-                        opacity: 0.18,
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        delay: 1,
-                      }}
-                    />
-
-                    {/* Main line */}
-                    <motion.path
-                      d="M10 190 C80 175 100 160 150 165 C200 170 205 125 260 135 C310 145 330 95 370 105 C415 115 420 55 490 20"
-                      stroke="#C9A86A"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      initial={{
-                        pathLength: 0,
-                      }}
-                      animate={{
-                        pathLength: 1,
-                      }}
-                      transition={{
-                        duration: 2,
-                        delay: 0.7,
-                        ease: "easeInOut",
-                      }}
-                    />
-
-                    {/* End point */}
-                    <motion.circle
-                      cx="490"
-                      cy="20"
-                      r="5"
-                      fill="#C9A86A"
-                      initial={{
-                        scale: 0,
-                      }}
-                      animate={{
-                        scale: [0, 1.3, 1],
-                      }}
-                      transition={{
-                        duration: 0.5,
-                        delay: 2.5,
-                      }}
-                    />
-
-                    <defs>
-                      <linearGradient
-                        id="chartGradient"
-                        x1="250"
-                        y1="20"
-                        x2="250"
-                        y2="220"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop
-                          stopColor="#C9A86A"
-                          stopOpacity="0.8"
-                        />
-
-                        <stop
-                          offset="1"
-                          stopColor="#C9A86A"
-                          stopOpacity="0"
-                        />
-                      </linearGradient>
-                    </defs>
-
-                  </svg>
-
+              <div>
+                <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-serif text-slate-900 font-medium">
+                  <span>100%</span>
+                  <ShieldCheck size={18} className="text-emerald-700" />
                 </div>
+                <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
+                  Goal-Aligned Plans
+                </p>
+              </div>
 
-                {/* Bottom philosophy card */}
+              <div>
+                <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-serif text-slate-900 font-medium">
+                  <span>15+ Yrs</span>
+                  <Award size={18} className="text-emerald-700" />
+                </div>
+                <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
+                  Market Experience
+                </p>
+              </div>
+            </motion.div>
+          </div>
 
-                <motion.div
-                  animate={{
-                    y: [0, -5, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-7 left-7 right-7 bg-[#071A2B]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-5 flex items-center justify-between"
-                >
-
+          {/* RIGHT COLUMN: PREVIEW + YOUTUBE CARD */}
+          <div className="lg:col-span-5 space-y-6 relative">
+            {/* Interactive Strategy Preview */}
+            <motion.div
+              style={{ rotateX, rotateY }}
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-2xl shadow-slate-900/5 backdrop-blur-xl"
+            >
+              {/* Card Header */}
+              <div className="flex items-center justify-between pb-6 border-b border-slate-100">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800">
+                    <PieChart size={20} />
+                  </div>
                   <div>
-
-                    <div className="text-[10px] uppercase tracking-widest text-white/35">
-                      Investment Philosophy
-                    </div>
-
-                    <div className="text-white mt-2 font-medium">
-                      Discipline
-                      <span className="text-[#C9A86A] mx-2">
-                        •
-                      </span>
-                      Goals
-                      <span className="text-[#C9A86A] mx-2">
-                        •
-                      </span>
-                      Time
-                    </div>
-
+                    <h3 className="text-sm font-semibold text-slate-900">
+                      Strategic Allocation
+                    </h3>
+                    <p className="text-xs text-slate-500">Sample Portfolio Model</p>
                   </div>
+                </div>
 
-                  <motion.div
-                    whileHover={{
-                      rotate: 45,
-                      scale: 1.1,
-                    }}
-                    className="w-11 h-11 rounded-full border border-[#C9A86A]/40 flex items-center justify-center"
+                {/* Allocation Toggle */}
+                <div className="flex bg-slate-100 p-1 rounded-lg text-xs font-medium">
+                  <button
+                    onClick={() => setActiveTab("growth")}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                      activeTab === "growth"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
                   >
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[#C9A86A]"
-                    />
-                  </motion.div>
+                    Growth
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("balanced")}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                      activeTab === "balanced"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
+                  >
+                    Balanced
+                  </button>
+                </div>
+              </div>
 
-                </motion.div>
+              {/* Dynamic Allocation Bars */}
+              <div className="mt-6 space-y-4">
+                {allocations[activeTab].map((item, idx) => (
+                  <div key={idx} className="space-y-1.5">
+                    <div className="flex justify-between text-xs font-medium text-slate-700">
+                      <span>{item.label}</span>
+                      <span className="font-semibold">{item.pct}</span>
+                    </div>
+                    <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: item.pct }}
+                        transition={{ duration: 0.8, delay: idx * 0.1 }}
+                        className={`h-full ${item.color} rounded-full`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
 
+              {/* Footer */}
+              <div className="mt-6 pt-4 flex items-center justify-between text-xs text-slate-400 border-t border-slate-100">
+                <span>Daisen Advisory Dashboard</span>
+                <span className="text-emerald-700 font-medium hover:underline cursor-pointer flex items-center gap-1">
+                  Custom Strategy <ChevronRight size={12} />
+                </span>
               </div>
             </motion.div>
 
-          </div>
+            {/* NEW: YouTube Channel Showcase Card */}
+            <motion.a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              whileHover={{ y: -4 }}
+              className="block group rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 p-5 text-white shadow-xl border border-slate-800 transition-all"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <FaYoutube size={22} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-slate-100 group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                      Daisen Wealth YouTube
+                      <ArrowUpRight size={14} className="opacity-70" />
+                    </h4>
+                    <p className="text-xs text-slate-400">
+                      Market Insights & Mutual Fund Education
+                    </p>
+                  </div>
+                </div>
 
+                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-medium text-slate-300">
+                  <Users size={12} className="text-red-400" />
+                  <span>Subscribe</span>
+                </div>
+              </div>
+            </motion.a>
+
+            {/* Decorative Glow Elements */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-amber-200/50 rounded-full blur-2xl pointer-events-none -z-10" />
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-emerald-200/50 rounded-full blur-2xl pointer-events-none -z-10" />
+          </div>
         </div>
       </div>
-
-      {/* =====================================================
-          SCROLL INDICATOR
-      ====================================================== */}
-
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          delay: 1.5,
-        }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3"
-      >
-
-        <span className="text-[9px] uppercase tracking-[0.3em] text-white/30">
-          Scroll to explore
-        </span>
-
-        <motion.div
-          animate={{
-            y: [0, 7, 0],
-          }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-          }}
-          className="w-px h-10 bg-gradient-to-b from-[#C9A86A] to-transparent"
-        />
-
-      </motion.div>
-
     </section>
   );
 }
