@@ -8,7 +8,7 @@ import {
   ChevronRight,
   Play,
   MessageCircle,
-  
+
   Users,
 } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -87,7 +87,7 @@ export default function Hero() {
         >
           <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-            AMFI Registered Mutual Fund Distributor
+            Your credible partner for mutual fund investing
           </span>
           <ChevronRight size={14} className="text-slate-400" />
         </motion.div>
@@ -101,11 +101,14 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-4xl sm:text-6xl xl:text-[68px] font-serif font-normal tracking-tight text-slate-900 leading-[1.08]"
             >
-              Building generational wealth with{" "}
+              Invest with{" "}
               <span className="italic font-serif text-emerald-800 underline decoration-emerald-300 decoration-wavy decoration-1 underline-offset-8">
-                clarity
+                Clarity
               </span>{" "}
-              & precision.
+              Grow with{" "}
+              <span className="italic font-serif text-emerald-800 underline decoration-emerald-300 decoration-wavy decoration-1 underline-offset-8">
+                Purpose
+              </span>
             </motion.h1>
 
             <motion.p
@@ -114,7 +117,8 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl font-light leading-relaxed"
             >
-              Goal-based mutual fund strategies tailored for high-net-worth individuals, families, and NRIs globally. Experience structured wealth management designed around your life milestones.
+              Goal-based mutual fund investing with personalised guidance for individuals, families and NRIs.
+              We help you choose suitable mutual fund strategies based on your goals, time horizon and risk profile — and stay with you for the long term.
             </motion.p>
 
             {/* CTAs */}
@@ -129,7 +133,7 @@ export default function Hero() {
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-3 bg-slate-900 hover:bg-emerald-950 text-white px-7 py-4 rounded-xl font-medium text-base shadow-xl shadow-slate-900/10 hover:shadow-emerald-950/20 transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                <span>Start Portfolio Advisory</span>
+                <span>Start Your Investment Journey</span>
                 <ArrowUpRight
                   size={18}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
@@ -146,11 +150,11 @@ export default function Hero() {
                 <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center">
                   <MessageCircle size={14} className="fill-current" />
                 </div>
-                <span>Join WhatsApp Group</span>
+                <span>Join Our WhatsApp Community</span>
               </a>
 
               {/* Secondary Link */}
-              <a
+              {/* <a
                 href="/investor-hub"
                 className="inline-flex items-center justify-center gap-2.5 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 px-6 py-4 rounded-xl font-medium text-base shadow-sm hover:bg-slate-50 transition-all duration-200"
               >
@@ -158,7 +162,7 @@ export default function Hero() {
                   <Play size={10} className="fill-current ml-0.5" />
                 </div>
                 <span>Investor Hub</span>
-              </a>
+              </a> */}
             </motion.div>
 
             {/* Metric Highlights */}
@@ -170,7 +174,7 @@ export default function Hero() {
             >
               <div>
                 <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-serif text-slate-900 font-medium">
-                  <span>20+</span>
+                  <span>30+</span>
                   <Globe2 size={18} className="text-emerald-700" />
                 </div>
                 <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
@@ -228,21 +232,19 @@ export default function Hero() {
                 <div className="flex bg-slate-100 p-1 rounded-lg text-xs font-medium">
                   <button
                     onClick={() => setActiveTab("growth")}
-                    className={`px-3 py-1.5 rounded-md transition-all ${
-                      activeTab === "growth"
-                        ? "bg-white text-slate-900 shadow-sm"
-                        : "text-slate-500 hover:text-slate-900"
-                    }`}
+                    className={`px-3 py-1.5 rounded-md transition-all ${activeTab === "growth"
+                      ? "bg-white text-slate-900 shadow-sm"
+                      : "text-slate-500 hover:text-slate-900"
+                      }`}
                   >
                     Growth
                   </button>
                   <button
                     onClick={() => setActiveTab("balanced")}
-                    className={`px-3 py-1.5 rounded-md transition-all ${
-                      activeTab === "balanced"
-                        ? "bg-white text-slate-900 shadow-sm"
-                        : "text-slate-500 hover:text-slate-900"
-                    }`}
+                    className={`px-3 py-1.5 rounded-md transition-all ${activeTab === "balanced"
+                      ? "bg-white text-slate-900 shadow-sm"
+                      : "text-slate-500 hover:text-slate-900"
+                      }`}
                   >
                     Balanced
                   </button>
@@ -296,7 +298,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-slate-100 group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-                      Daisen Wealth YouTube
+                      Daisen Joseph - Watch on YouTube
                       <ArrowUpRight size={14} className="opacity-70" />
                     </h4>
                     <p className="text-xs text-slate-400">
