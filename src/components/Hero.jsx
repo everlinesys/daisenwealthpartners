@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ArrowUpRight,
   ShieldCheck,
@@ -6,17 +6,54 @@ import {
   PieChart,
   Award,
   ChevronRight,
-  Play,
   MessageCircle,
-
   Users,
+  Repeat,
+  Wallet,
+  Target,
 } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { FaYoutube } from "react-icons/fa";
 
 export default function Hero() {
   const containerRef = useRef(null);
   const [activeTab, setActiveTab] = useState("growth");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      term: "SIP",
+      title: "Systematic Investment Plan",
+      description: "Invest regularly. Grow steadily.",
+      icon: Repeat,
+      badge: "Wealth Accumulation",
+      metric: "Disciplined Investing",
+    },
+    {
+      term: "SWP",
+      title: "Systematic Withdrawal Plan",
+      description: "Create a regular income from your investments.",
+      icon: Wallet,
+      badge: "Cash Flow Strategy",
+      metric: "Post-Retirement Income",
+    },
+    {
+      term: "Goal-Based Investing",
+      title: "Milestone-Driven Portfolios",
+      description: "Invest with a clear goal in mind.",
+      icon: Target,
+      badge: "Purpose-Led Wealth",
+      metric: "Milestone Alignment",
+    },
+  ];
+
+  // Auto-advance the slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   // Mouse tilt effect for interactive preview card
   const mouseX = useMotionValue(0);
@@ -54,6 +91,8 @@ export default function Hero() {
       { label: "Gold & Commodities", pct: "15%", color: "bg-amber-400" },
     ],
   };
+
+  const CurrentSlideIcon = slides[currentSlide].icon;
 
   return (
     <section
@@ -121,6 +160,72 @@ export default function Hero() {
               We help you choose suitable mutual fund strategies based on your goals, time horizon and risk profile — and stay with you for the long term.
             </motion.p>
 
+            {/* AUTO-MOVING SLIDER CARD */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mt-8 max-w-2xl bg-white border border-slate-200/80 rounded-2xl p-6 shadow-xl shadow-slate-900/5 relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 4, ease: "linear" }}
+                  className="h-full bg-emerald-700"
+                />
+              </div>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="flex items-start justify-between gap-4"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0 mt-0.5">
+                      <CurrentSlideIcon size={24} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl font-serif font-bold text-slate-900">
+                          {slides[currentSlide].term}
+                        </span>
+                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-900/5 border border-emerald-900/10 text-emerald-800 font-semibold tracking-wider uppercase">
+                          {slides[currentSlide].badge}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm font-medium text-slate-700">
+                        {slides[currentSlide].description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="hidden sm:inline-block text-xs font-semibold text-slate-400 uppercase tracking-widest pt-1">
+                    0{currentSlide + 1} / 0{slides.length}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Slide Navigation Dots */}
+              <div className="flex items-center gap-1.5 mt-5 pt-4 border-t border-slate-100">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? "w-6 bg-emerald-800" : "w-1.5 bg-slate-200"
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -152,17 +257,6 @@ export default function Hero() {
                 </div>
                 <span>Join Our WhatsApp Community</span>
               </a>
-
-              {/* Secondary Link */}
-              {/* <a
-                href="/investor-hub"
-                className="inline-flex items-center justify-center gap-2.5 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 px-6 py-4 rounded-xl font-medium text-base shadow-sm hover:bg-slate-50 transition-all duration-200"
-              >
-                <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
-                  <Play size={10} className="fill-current ml-0.5" />
-                </div>
-                <span>Investor Hub</span>
-              </a> */}
             </motion.div>
 
             {/* Metric Highlights */}
@@ -232,19 +326,21 @@ export default function Hero() {
                 <div className="flex bg-slate-100 p-1 rounded-lg text-xs font-medium">
                   <button
                     onClick={() => setActiveTab("growth")}
-                    className={`px-3 py-1.5 rounded-md transition-all ${activeTab === "growth"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-900"
-                      }`}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                      activeTab === "growth"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
                   >
                     Growth
                   </button>
                   <button
                     onClick={() => setActiveTab("balanced")}
-                    className={`px-3 py-1.5 rounded-md transition-all ${activeTab === "balanced"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-500 hover:text-slate-900"
-                      }`}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                      activeTab === "balanced"
+                        ? "bg-white text-slate-900 shadow-sm"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
                   >
                     Balanced
                   </button>
@@ -280,7 +376,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* NEW: YouTube Channel Showcase Card */}
+            {/* YouTube Channel Showcase Card */}
             <motion.a
               href="https://www.youtube.com/@daisenjoseph"
               target="_blank"

@@ -142,7 +142,7 @@ export default function AboutUs() {
                 className="absolute bottom-0 left-0 right-0 p-8"
               >
                 <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                  Founder & Managing Consultant
+                  Founder
                 </p>
                 <h3 className="mt-1 text-3xl font-serif text-white font-medium">
                   Daisen Joseph
@@ -163,7 +163,7 @@ export default function AboutUs() {
                 <Globe2 size={20} />
               </div>
               <div className="mt-3 text-2xl font-serif font-bold text-slate-900">
-                20+ Countries
+                30+ Countries
               </div>
               <p className="mt-1 text-xs text-slate-500 leading-normal font-medium">
                 Investors served across domestic and NRI communities worldwide
@@ -196,7 +196,7 @@ export default function AboutUs() {
             </motion.h3>
 
             <motion.p variants={reveal} className="mt-1 text-slate-500 text-sm">
-              Founder & Managing Consultant
+              Founder
             </motion.p>
 
             {/* Credential Badge */}
@@ -206,7 +206,7 @@ export default function AboutUs() {
               className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-900/5 text-xs text-slate-800 font-medium border border-emerald-900/10"
             >
               <Award size={16} className="text-emerald-700 shrink-0" />
-              <span>M.Com (Finance & Marketing) | NISM Certified</span>
+              <span>M.Com (Finance & Marketing) | NISM Certified | AMFI Registered Mutual Fund Distributor (ARN 310583)</span>
             </motion.div>
 
             {/* Description Narrative */}
@@ -215,13 +215,13 @@ export default function AboutUs() {
               className="mt-6 space-y-4 text-slate-600 leading-relaxed text-sm lg:text-base font-light"
             >
               <p>
-                Daisen Joseph is the Founder & Managing Consultant of Daisen Wealth Partners. With a Master's degree in Commerce specializing in Finance & Marketing and NISM certification, he helps investors navigate mutual funds with clarity and discipline.
+                Daisen Joseph is the Founder of Daisen Wealth Partners, with a Master’s degree in Commerce specializing in Finance & Marketing and NISM certification. As an AMFI Registered Mutual Fund Distributor, he helps investors approach mutual fund investing with clarity, discipline, and a long-term perspective.
               </p>
               <p>
-                His approach centers around long-term wealth accumulation tailored to specific life objectives, eliminating market noise and impulsive portfolio decisions.
+                With 20+ years of personal experience in investing and trading in the financial markets, he brings a practical understanding of market behaviour and long-term wealth creation to his approach.
               </p>
               <p>
-                At Daisen Wealth Partners, every investment conversation begins by understanding your unique financial timeline, risk appetite, and strategic priorities.
+                At Daisen Wealth Partners, the focus is on understanding each investor’s financial goals, risk profile, and investment horizon, and helping them stay disciplined through changing market conditions.
               </p>
             </motion.div>
 
