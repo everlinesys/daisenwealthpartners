@@ -56,25 +56,27 @@ export default function AboutUs() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={reveal}
-          className="max-w-3xl mb-16 lg:mb-20"
+          className="max-w-3xl mb-16 lg:mb-20 text-slate-900"
         >
+          {/* Header Badge */}
           <div className="flex items-center gap-3 mb-5">
             <motion.span
               initial={{ width: 0 }}
               whileInView={{ width: 36 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-0.5 bg-emerald-700"
+              className="h-0.5 bg-emerald-700 block"
             />
             <span className="text-emerald-800 text-xs font-semibold tracking-widest uppercase">
               About Daisen Wealth Partners
             </span>
           </div>
 
+          {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-slate-900 leading-[1.1] font-semibold tracking-tight">
-            Helping You Invest{" "}
+            Helping Investors Understand{" "}
             <motion.span
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -82,13 +84,111 @@ export default function AboutUs() {
               transition={{ delay: 0.15, duration: 0.7 }}
               className="block text-emerald-800 italic font-normal"
             >
-              Towards Your Goals.
+              Mutual Funds Better.
             </motion.span>
           </h2>
 
+          {/* Introduction */}
           <p className="mt-6 text-slate-600 text-lg leading-relaxed font-light">
-            We believe investing is not about following short-term market trends. It is about understanding your goals and choosing the right investment approach for the long term.
+            At Daisen Wealth Partners, we believe successful investing is not about
+            chasing market trends. It is about understanding your goals, investing
+            with discipline, and staying focused on the long term.
           </p>
+
+          <p className="mt-4 text-slate-600 text-lg leading-relaxed font-light">
+            We help individuals, families and NRIs understand mutual funds and make
+            informed investment decisions through goal-oriented mutual fund
+            investment support.
+          </p>
+
+          {/* Our Philosophy */}
+          <div className="mt-10">
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-4">
+              Our Philosophy
+            </h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-600 font-light text-base">
+              {[
+                "Goal-Oriented Investing",
+                "Long-Term Investing",
+                "Investor Education",
+                "Transparency & Integrity",
+                "Continuous Investor Support",
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-700 block" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Serving Investors Worldwide */}
+          <div className="mt-10">
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-3">
+              Serving Investors Worldwide
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed font-light">
+              We support investors across 30+ countries, including a growing
+              community of NRI investors.
+            </p>
+            <p className="mt-3 text-slate-600 text-lg leading-relaxed font-light">
+              Whether you are in India or abroad, our focus is to make mutual fund
+              investing easier to understand and simpler to manage.
+            </p>
+          </div>
+
+          {/* Beyond Investments */}
+          <div className="mt-10">
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-3">
+              Beyond Investments
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed font-light">
+              We believe investor education is an important part of successful
+              investing.
+            </p>
+            <p className="mt-3 text-slate-600 text-lg leading-relaxed font-light">
+              Through the Daisen Joseph YouTube Channel and Daisen Academy, we share
+              educational content on mutual funds, SIPs, SWPs, retirement income,
+              taxation, market behaviour and investor awareness.
+            </p>
+          </div>
+
+          {/* Mission & Vision */}
+          <div className="mt-10 space-y-6">
+            <div>
+              <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-2">
+                Our Mission
+              </h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                To help individuals, families and NRIs understand mutual funds and
+                invest towards their goals through disciplined investing, investor
+                education and trusted distribution support.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-2">
+                Our Vision
+              </h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-light">
+                To become a trusted and respected mutual fund distribution firm,
+                known for integrity, transparency, investor education and long-term
+                client relationships.
+              </p>
+            </div>
+          </div>
+
+          {/* Call To Action */}
+          <div className="mt-12 pt-8 border-t border-slate-200">
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-3">
+              Let's Work Towards Your Investment Goals
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed font-light">
+              Whether you are starting your first SIP or looking to organise your
+              existing mutual fund investments, Daisen Wealth Partners is here to
+              support you throughout your investment journey.
+            </p>
+          </div>
         </motion.div>
 
         {/* Main Grid Content */}
@@ -196,7 +296,7 @@ export default function AboutUs() {
             </motion.h3>
 
             <motion.p variants={reveal} className="mt-1 text-slate-500 text-sm">
-              Founder  
+              Founder
             </motion.p>
 
             {/* Credential Badge */}
