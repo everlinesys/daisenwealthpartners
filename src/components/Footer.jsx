@@ -151,7 +151,7 @@ export default function Footer() {
             <div className="bg-slate-900/60 rounded-xl p-4 border border-slate-800/80">
               <p className="text-sm font-medium text-slate-100">Daisen Joseph</p>
               <p className="text-xs text-emerald-400 mt-0.5 font-medium">
-                Founder & Managing Consultant
+                Founder 
               </p>
 
               <div className="mt-3 pt-3 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">

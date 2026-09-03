@@ -192,12 +192,20 @@ export default function Services() {
                 </div>
 
                 {/* Interactive Action Link */}
-                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">
+                <a
+                  href="https://wa.me/918301808509?text=Hello%2C%20I%20would%20like%20to%20know%20more."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors"
+                >
                   <span>Learn More</span>
                   <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-emerald-800 group-hover:text-white flex items-center justify-center transition-all duration-300">
-                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight
+                      size={14}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
                   </div>
-                </div>
+                </a>
               </motion.div>
             );
           })}
