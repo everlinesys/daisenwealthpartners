@@ -215,7 +215,7 @@ export default function AboutUs() {
               className="mt-6 space-y-4 text-slate-600 leading-relaxed text-sm lg:text-base font-light"
             >
               <p>
-                Daisen Joseph is the Founder of Daisen Wealth Partners, with a Master’s degree in Commerce specializing in Finance & Marketing and NISM certification. As an AMFI Registered Mutual Fund Distributor, he helps investors approach mutual fund investing with clarity, discipline, and a long-term perspective.
+                Daisen Joseph is the Founder of Daisen Wealth Partners and Daisen Academy, with a Master’s degree in Commerce specializing in Finance & Marketing and NISM certification. As an AMFI Registered Mutual Fund Distributor, he helps investors approach mutual fund investing with clarity, discipline, and a long-term perspective.
               </p>
               <p>
                 With 20+ years of personal experience in investing and trading in the financial markets, he brings a practical understanding of market behaviour and long-term wealth creation to his approach.

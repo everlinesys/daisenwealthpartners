@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import AboutUs from "../components/AboutUs";
-import Services from "../components/Services";
+import Services from "../pages/Services";
 import Features from "../components/Features";
 import CTA from "../components/CTA";
 import { motion } from "framer-motion";
@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
   Sparkles,
 } from "lucide-react";
+import PlanningTools from "./PlanningTools";
 
 export default function Home() {
   const corePillars = [
@@ -45,8 +46,10 @@ export default function Home() {
       {/* Primary Services Capabilities */}
       <Services />
 
+      <PlanningTools />
+
       {/* Feature Highlights & Value Proposition */}
-      <Features />
+      {/* <Features /> */}
 
       {/* REDESIGNED SECTION: Brand Philosophy & Core Pillars */}
       <section className="relative py-24 lg:py-32 bg-white overflow-hidden border-t border-slate-100">

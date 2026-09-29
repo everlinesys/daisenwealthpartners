@@ -192,207 +192,330 @@ export default function AboutUs() {
         </motion.div>
 
         {/* Main Grid Content */}
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          {/* Founder Image Column */}
-          <motion.div
-            ref={imageRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative perspective-[1200px]"
-          >
-            {/* Animated Decorative Accent Frame */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -left-4 w-full h-full border border-emerald-800/20 rounded-[2.5rem]"
-            />
+        {/* Main Grid Content */}
+        <div className="mt-20">
 
-            {/* Photo Card with 3D Tilt */}
+          {/* Hero Image + Intro */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+
+            {/* Left Intro */}
             <motion.div
-              style={{
-                rotateX: imageRotateX,
-                rotateY: imageRotateY,
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.12 },
+                },
               }}
-              className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-slate-200 shadow-xl border border-slate-900/10"
             >
-              <motion.img
-                src={founderImage}
-                alt="Daisen Joseph - Founder and Managing Consultant"
-                initial={{ scale: 1.05 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.03 }}
-                className="w-full h-full object-cover"
-              />
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
-
-              {/* Caption Overlay */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.7 }}
-                className="absolute bottom-0 left-0 right-0 p-8"
+              <motion.p
+                variants={reveal}
+                className="text-emerald-800 text-xs font-semibold tracking-widest uppercase"
               >
-                <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                  Founder
-                </p>
-                <h3 className="mt-1 text-3xl font-serif text-white font-medium">
-                  Daisen Joseph
-                </h3>
+                Our Approach
+              </motion.p>
+
+              <motion.h3
+                variants={reveal}
+                className="mt-3 text-3xl md:text-4xl font-serif text-slate-900 font-semibold"
+              >
+                Understand. Discuss. Invest. Review.
+              </motion.h3>
+
+              <motion.p
+                variants={reveal}
+                className="mt-5 text-slate-600 text-lg leading-relaxed font-light"
+              >
+                We believe every investor is different. Investment goals, time
+                horizons, financial requirements and risk considerations can vary
+                from one person to another.
+              </motion.p>
+
+              <motion.p
+                variants={reveal}
+                className="mt-4 text-slate-600 text-lg leading-relaxed font-light"
+              >
+                Our approach is simple and focused on understanding your needs,
+                discussing suitable options, investing with clarity and reviewing
+                your journey over time.
+              </motion.p>
+            </motion.div>
+
+
+            {/* Hero Image - Top Right */}
+            <motion.div
+              ref={imageRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              initial={{ opacity: 0, x: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="relative perspective-[1200px]"
+            >
+              <motion.div
+                style={{
+                  rotateX: imageRotateX,
+                  rotateY: imageRotateY,
+                }}
+                className="relative"
+              >
+                <div className="absolute -inset-4 rounded-[2rem] bg-emerald-900/5 blur-2xl" />
+
+                <div className="relative overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white shadow-xl">
+                  <motion.img
+                    src={"about.png"}
+                    alt="Daisen Wealth Partners"
+                    className="w-full h-full] lg:h-[500px] object-cover"
+                    style={{
+                      scale: 1.03,
+                    }}
+                  />
+
+                  {/* Image Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
+
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-white/50">
+                      <span className="h-2 w-2 rounded-full bg-emerald-700" />
+                      <span className="text-xs font-semibold tracking-wide text-slate-800">
+                        Investing with Purpose. Building a Financial Future.
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
 
-            {/* Floating Global Reach Metric Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, y: 20 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              animate={{ y: [0, -8, 0] }}
-              className="absolute -bottom-6 -right-4 lg:-right-6 bg-white rounded-2xl shadow-xl p-5 w-56 border border-slate-200/80"
-            >
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-800">
-                <Globe2 size={20} />
-              </div>
-              <div className="mt-3 text-2xl font-serif font-bold text-slate-900">
-                30+ Countries
-              </div>
-              <p className="mt-1 text-xs text-slate-500 leading-normal font-medium">
-                Investors served across domestic and NRI communities worldwide
-              </p>
-            </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Text Content & Credentials Column */}
+
+          {/* Approach Steps */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.12 } },
-            }}
+            viewport={{ once: true, amount: 0.15 }}
+            variants={reveal}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
           >
-            <motion.p
-              variants={reveal}
-              className="text-emerald-800 text-xs font-semibold tracking-widest uppercase"
-            >
-              Meet the Founder
-            </motion.p>
-
-            <motion.h3
-              variants={reveal}
-              className="mt-3 text-3xl md:text-4xl font-serif text-slate-900 font-semibold"
-            >
-              Daisen Joseph
-            </motion.h3>
-
-            <motion.p variants={reveal} className="mt-1 text-slate-500 text-sm">
-              Founder
-            </motion.p>
-
-            {/* Credential Badge */}
-            <motion.div
-              variants={reveal}
-              whileHover={{ y: -2 }}
-              className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-900/5 text-xs text-slate-800 font-medium border border-emerald-900/10"
-            >
-              <Award size={16} className="text-emerald-700 shrink-0" />
-              <span>M.Com (Finance & Marketing) | NISM Certified | AMFI Registered Mutual Fund Distributor (ARN 310583)</span>
-            </motion.div>
-
-            {/* Description Narrative */}
-            <motion.div
-              variants={reveal}
-              className="mt-6 space-y-4 text-slate-600 leading-relaxed text-sm lg:text-base font-light"
-            >
-              <p>
-                Daisen Joseph is the Founder of Daisen Wealth Partners, with a Master’s degree in Commerce specializing in Finance & Marketing and NISM certification. As an AMFI Registered Mutual Fund Distributor, he helps investors approach mutual fund investing with clarity, discipline, and a long-term perspective.
-              </p>
-              <p>
-                With 20+ years of personal experience in investing and trading in the financial markets, he brings a practical understanding of market behaviour and long-term wealth creation to his approach.
-              </p>
-              <p>
-                At Daisen Wealth Partners, the focus is on understanding each investor’s financial goals, risk profile, and investment horizon, and helping them stay disciplined through changing market conditions.
-              </p>
-            </motion.div>
-
-            {/* Value Cards */}
-            <motion.div
-              variants={reveal}
-              className="grid sm:grid-cols-2 gap-4 mt-8"
-            >
-              {/* Card 1 */}
-              <motion.div
-                whileHover={{
-                  y: -6,
-                  boxShadow: "0 15px 35px rgba(15, 23, 42, 0.06)",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="p-5 rounded-2xl bg-white border border-slate-200/80 cursor-default"
+            {[
+              ["01", "Understand"],
+              ["02", "Discuss"],
+              ["03", "Invest"],
+              ["04", "Review"],
+            ].map(([number, title]) => (
+              <div
+                key={number}
+                className="p-5 rounded-2xl bg-white border border-slate-200/80"
               >
-                <div className="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white">
-                  <Target size={18} />
-                </div>
-                <h4 className="mt-3 font-semibold text-slate-900 text-sm">
-                  Goal-Based Investing
+                <span className="text-xs font-semibold text-emerald-700">
+                  {number}
+                </span>
+
+                <h4 className="mt-2 font-serif text-xl font-semibold text-slate-900">
+                  {title}
                 </h4>
-                <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                  Portfolios constructed directly around your key financial milestones.
-                </p>
-              </motion.div>
-
-              {/* Card 2 */}
-              <motion.div
-                whileHover={{
-                  y: -6,
-                  boxShadow: "0 15px 35px rgba(15, 23, 42, 0.06)",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="p-5 rounded-2xl bg-white border border-slate-200/80 cursor-default"
-              >
-                <div className="w-9 h-9 rounded-xl bg-emerald-950 flex items-center justify-center text-white">
-                  <ShieldCheck size={18} />
-                </div>
-                <h4 className="mt-3 font-semibold text-slate-900 text-sm">
-                  Investor-First Guidance
-                </h4>
-                <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                  Transparent advice focused on sustainable long-term wealth growth.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.a
-              variants={reveal}
-              href="/about"
-              whileHover="hover"
-              className="inline-flex items-center gap-3 mt-8 text-slate-900 font-semibold text-sm group"
-            >
-              <span>Discover Our Story</span>
-              <motion.span
-                variants={{
-                  hover: {
-                    backgroundColor: "#0F172A",
-                    color: "#FFFFFF",
-                    rotate: 45,
-                  },
-                }}
-                className="w-9 h-9 rounded-xl border border-slate-300 flex items-center justify-center text-slate-800 transition-colors"
-              >
-                <ArrowUpRight size={16} />
-              </motion.span>
-            </motion.a>
+              </div>
+            ))}
           </motion.div>
+
+
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-6 text-slate-600 text-lg leading-relaxed font-light"
+          >
+            We encourage investors to understand their investments clearly, make
+            informed decisions and remain disciplined through different market
+            conditions.
+          </motion.p>
+
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-4 text-slate-600 text-lg leading-relaxed font-light"
+          >
+            Our focus is on building a long-term relationship with investors
+            through clear communication, investor education and consistent support.
+          </motion.p>
+
+
+          {/* Who We Serve */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-12"
+          >
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-4">
+              Who We Serve
+            </h3>
+
+            <ul className="grid sm:grid-cols-2 gap-3 text-slate-600 font-light">
+              {[
+                "Individuals starting their investment journey",
+                "Families investing towards long-term goals",
+                "NRIs investing in Indian mutual funds",
+                "Investors building disciplined SIP portfolios",
+                "Investors making lump-sum investments",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-700 block mt-2 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 text-slate-600 leading-relaxed font-light">
+              Our aim is to make investing simple, transparent and easy to
+              understand for every investor.
+            </p>
+          </motion.div>
+
+
+          {/* How We Support Investors */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-12"
+          >
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-4">
+              How We Support Investors
+            </h3>
+
+            <p className="text-slate-600 leading-relaxed font-light">
+              We provide support across various mutual fund investment and service
+              requirements, including:
+            </p>
+
+            <ul className="grid sm:grid-cols-2 gap-3 mt-5 text-slate-600 font-light">
+              {[
+                "SIP Investments",
+                "Lump-sum Investments",
+                "Systematic Transfer Plans (STP)",
+                "Systematic Withdrawal Plans (SWP)",
+                "Mutual fund transactions and service requests",
+                "Portfolio-related support",
+                "NRI mutual fund investment support",
+                "Investor education and awareness",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-700 block mt-2 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 text-slate-600 leading-relaxed font-light">
+              Along with mutual fund services, we also provide Life Insurance and
+              Health Insurance services, helping individuals and families understand
+              the importance of financial protection alongside long-term investing.
+            </p>
+          </motion.div>
+
+
+          {/* Investment & Protection */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-12"
+          >
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-4">
+              Investment & Protection
+            </h3>
+
+            <p className="text-slate-600 leading-relaxed font-light">
+              We believe a strong financial foundation is built through both
+              long-term investing and adequate financial protection.
+            </p>
+
+            <p className="mt-4 text-slate-600 leading-relaxed font-light">
+              Mutual funds can help investors work towards their long-term
+              investment goals, while life and health insurance can provide
+              financial protection against important life and health-related
+              uncertainties.
+            </p>
+
+            <p className="mt-4 text-slate-600 leading-relaxed font-light">
+              Our aim is to help investors understand the importance of both
+              investment and protection, and make informed decisions based on
+              their individual needs.
+            </p>
+          </motion.div>
+
+
+          {/* Our Commitment */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-12"
+          >
+            <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-4">
+              Our Commitment
+            </h3>
+
+            <p className="text-slate-600 leading-relaxed font-light">
+              We believe meaningful investor relationships are built on trust,
+              transparency and consistent support.
+            </p>
+
+            <p className="mt-5 text-slate-600 leading-relaxed font-light">
+              We are committed to:
+            </p>
+
+            <ul className="grid sm:grid-cols-2 gap-3 mt-4 text-slate-600 font-light">
+              {[
+                "Clear and simple communication",
+                "Easy-to-understand investor education",
+                "Timely service and transaction support",
+                "Regular investor communication",
+                "Ongoing support for our clients",
+                "Responsible and transparent service",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-700 block mt-2 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 text-slate-600 leading-relaxed font-light">
+              We believe our role goes beyond helping investors start an
+              investment. We aim to support them throughout their investment
+              journey with education, service and long-term relationship.
+            </p>
+          </motion.div>
+
+
+          {/* Closing Statement */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={reveal}
+            className="mt-10 pt-8 border-t border-slate-200"
+          >
+            <p className="text-2xl md:text-3xl font-serif text-slate-900">
+              Understand better. Invest with discipline. Stay focused on your goals.
+            </p>
+          </motion.div>
+
         </div>
       </div>
     </section>

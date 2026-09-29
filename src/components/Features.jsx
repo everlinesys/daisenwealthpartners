@@ -55,9 +55,9 @@ export default function Features() {
       highlights: [
         "NRE & NRO account strategy and portfolio setup",
         "Full compliance with FEMA and international tax norms",
-        "Servicing clients across 20+ countries seamlessly",
+        "Servicing clients across 30+ countries seamlessly",
       ],
-      metric: "20+",
+      metric: "30+",
       metricLabel: "Countries with active NRI investors",
     },
     {

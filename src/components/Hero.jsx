@@ -288,7 +288,7 @@ export default function Hero() {
 
               <div>
                 <div className="flex items-center gap-1.5 text-2xl sm:text-3xl font-serif text-slate-900 font-medium">
-                  <span>15+ Yrs</span>
+                  <span>20+ Yrs</span>
                   <Award size={18} className="text-emerald-700" />
                 </div>
                 <p className="mt-1 text-xs sm:text-sm text-slate-500 font-medium">
