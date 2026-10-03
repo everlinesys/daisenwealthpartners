@@ -67,7 +67,7 @@ export default function Footer() {
 
                 {/* Consultation */}
                 <a
-                  href="#contact"
+                  href={whatsappLink}
                   className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-7 py-3.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-950/50"
                 >
                   <span>Book a Consultation</span>
@@ -118,7 +118,7 @@ export default function Footer() {
             <div className="lg:col-span-1">
 
               <a
-                href="#home"
+                href="/"
                 className="inline-block group"
               >
                 <div className="text-2xl font-serif font-bold text-slate-100 group-hover:text-emerald-400 transition">
@@ -151,7 +151,7 @@ export default function Footer() {
                 {services.map((service) => (
                   <li key={service}>
                     <a
-                      href="#services"
+                      href="/services"
                       className="text-xs text-slate-400 hover:text-emerald-400 transition flex items-center gap-1"
                     >
                       <span>{service}</span>
@@ -175,7 +175,7 @@ export default function Footer() {
                 {resources.map((resource) => (
                   <li key={resource}>
                     <a
-                      href="#planning-tools"
+                      href="/planning-tools"
                       className="text-xs text-slate-400 hover:text-emerald-400 transition"
                     >
                       {resource}
@@ -304,7 +304,7 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="#about"
+                  href="/about"
                   className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition"
                 >
                   <span>Read Profile</span>
@@ -318,7 +318,7 @@ export default function Footer() {
 
                 {/* YouTube */}
                 <a
-                  href="#"
+                  href="https://www.youtube.com/@daisenjoseph" target="_blank" rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-800 transition"
                   aria-label="YouTube Channel"
                 >
@@ -393,24 +393,15 @@ export default function Footer() {
 
             <div className="flex flex-wrap justify-center gap-6">
 
-              <a
-                href="#"
-                className="hover:text-slate-300 transition"
-              >
+              <a href="/privacy-policy" className="hover:text-slate-300 transition">
                 Privacy Policy
               </a>
 
-              <a
-                href="#"
-                className="hover:text-slate-300 transition"
-              >
+              <a href="/terms" className="hover:text-slate-300 transition">
                 Terms & Conditions
               </a>
 
-              <a
-                href="#"
-                className="hover:text-slate-300 transition"
-              >
+              <a href="/regulatory-disclosures" className="hover:text-slate-300 transition">
                 Regulatory Disclosures
               </a>
 

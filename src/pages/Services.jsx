@@ -235,7 +235,7 @@ export default function Services() {
           </div>
 
           <a
-            href="/contact"
+            href="https://wa.me/918301808509" target="_blank" rel="noopener noreferrer"
             className="relative z-10 shrink-0 inline-flex items-center gap-3 bg-emerald-800 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 shadow-xl shadow-emerald-950/40"
           >
             <span>Book Free Consultation</span>

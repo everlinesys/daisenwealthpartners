@@ -29,6 +29,42 @@ const investorLinks = [
     href: "https://www.mfuindia.com/",
     action: "Visit MFU India",
   },
+  {
+    title: "CAMS – Investor Services",
+    description:
+      "Access investor services and mutual fund information through CAMS Online.",
+    category: "Investor Services",
+    icon: Wallet,
+    href: "https://www.camsonline.com/",
+    action: "Visit CAMS Online",
+  },
+  {
+    title: "KFintech – Investor Services",
+    description:
+      "Access investor support, service information, and resources from KFintech.",
+    category: "Investor Services",
+    icon: ShieldCheck,
+    href: "https://investor.kfintech.com/",
+    action: "Visit KFintech",
+  },
+  {
+    title: "KFintech MFS",
+    description:
+      "Access KFintech's mutual fund investor services and customer support portal.",
+    category: "Mutual Fund Services",
+    icon: Globe2,
+    href: "https://mfs.kfintech.com/mfs/InvestorServices/InvCustomerCare.aspx?frm=iC",
+    action: "Visit KFintech MFS",
+  },
+  {
+    title: "AMFI – Association of Mutual Funds in India",
+    description:
+      "Explore investor education, mutual fund information, tools, and industry resources from AMFI.",
+    category: "Investor Education",
+    icon: BookOpen,
+    href: "https://www.amfiindia.com/",
+    action: "Visit AMFI India",
+  },
 ];
 
 const resources = [
@@ -391,7 +427,7 @@ export default function InvestorHub() {
           <div className="mt-7 flex flex-wrap justify-center gap-3">
 
             <a
-              href="#contact"
+              href="https://wa.me/918301808509"
               className="inline-flex items-center gap-2 rounded-xl bg-[#071A2B] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#102c42] transition"
             >
               <span>Contact Us</span>

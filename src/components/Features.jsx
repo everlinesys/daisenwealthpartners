@@ -244,7 +244,7 @@ export default function Features() {
                     </div>
                   </div>
                   <a
-                    href="/contact"
+                    href="https://wa.me/918301808509" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-800 hover:text-emerald-950 transition-colors"
                   >
                     <span>Learn More</span>

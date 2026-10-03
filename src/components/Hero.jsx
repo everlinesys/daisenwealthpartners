@@ -235,7 +235,7 @@ export default function Hero() {
             >
               {/* Primary Consultation Button */}
               <a
-                href="/contact"
+                href="https://wa.me/918301808509"
                 className="group inline-flex items-center justify-center gap-3 bg-slate-900 hover:bg-emerald-950 text-white px-7 py-4 rounded-xl font-medium text-base shadow-xl shadow-slate-900/10 hover:shadow-emerald-950/20 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <span>Start Your Investment Journey</span>
@@ -247,7 +247,7 @@ export default function Hero() {
 
               {/* WhatsApp Community Button */}
               <a
-                href="https://whatsapp.com"
+                href="https://wa.me/918301808509"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 px-6 py-4 rounded-xl font-medium text-base shadow-sm transition-all duration-200"

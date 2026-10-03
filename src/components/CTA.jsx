@@ -92,7 +92,7 @@ export default function CTA() {
 
                 {/* Primary CTA: Book Consultation */}
                 <a
-                  href="/contact"
+                  href="https://wa.me/918301808509" target="_blank" rel="noopener noreferrer"
                   className="group w-full inline-flex items-center justify-center gap-3 bg-emerald-700 hover:bg-emerald-600 text-white px-6 py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg shadow-emerald-950/50"
                 >
                   <Calendar size={18} />
@@ -115,7 +115,7 @@ export default function CTA() {
 
                 {/* Secondary CTA: WhatsApp Community */}
                 <a
-                  href="https://whatsapp.com"
+                  href="https://wa.me/918301808509"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-3 bg-slate-900/90 hover:bg-slate-900 text-slate-200 border border-slate-700 hover:border-emerald-500/50 px-6 py-3.5 rounded-xl font-medium text-sm transition-all duration-300"
