@@ -28,6 +28,7 @@ export default function Hero() {
       description: "Invest regularly. Grow steadily with disciplined wealth creation.",
       icon: Repeat,
       badge: "Wealth Accumulation",
+      image: "/hero1.png",
     },
     {
       term: "SWP",
@@ -35,6 +36,7 @@ export default function Hero() {
       description: "Generate consistent passive income from your existing portfolio.",
       icon: Wallet,
       badge: "Cash Flow Strategy",
+      image: "/hero2.png",
     },
     {
       term: "Goal-Based",
@@ -42,6 +44,7 @@ export default function Hero() {
       description: "Align your investments directly with life's major milestones.",
       icon: Target,
       badge: "Purpose-Led Wealth",
+      image: "/hero3.png",
     },
     {
       term: "Protection",
@@ -49,6 +52,7 @@ export default function Hero() {
       description: "Safeguard your family's future with tailored protection plans.",
       icon: ShieldCheck,
       badge: "Risk Management",
+      image: "/hero4.png",
     },
   ];
 
@@ -59,7 +63,7 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  // 3D Parallax Tilt Effect on Hero Image
+  // 3D Parallax Tilt Effect on Hero Card
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -136,10 +140,10 @@ export default function Hero() {
           <ChevronRight size={13} className="text-slate-400" />
         </motion.div>
 
-        {/* 2-Column Grid Optimized for Single Screen Viewport */}
+        {/* 2-Column Grid */}
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN: Headlines, Interactive Slider, CTAs & Metrics */}
+          {/* LEFT COLUMN: Headlines, Dynamic Dynamic Background Slider, CTAs & Metrics */}
           <div className="lg:col-span-6 space-y-4 lg:space-y-5">
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
@@ -167,66 +171,87 @@ export default function Hero() {
               Goal-based mutual fund investing with personalized guidance for individuals, families, and NRIs.
             </motion.p>
 
-            {/* AUTO-SLIDER CARD */}
+            {/* SLIDING CARD WITH HERO 1, 2, 3 & 4 DYNAMIC BACKGROUNDS */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-xl p-3.5 sm:p-4 shadow-sm relative overflow-hidden"
+              className="relative rounded-xl border border-slate-200/90 shadow-md overflow-hidden text-white min-h-[160px] flex flex-col justify-between p-4 bg-slate-900"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100">
+              {/* Dynamic Fading Background Image Array */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentSlide}
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].title}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </AnimatePresence>
+
+              {/* Reduced Darkness Overlay (Lighter tint to make image details pop) */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/45 to-slate-950/20" />
+
+              {/* Progress Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-white/30 z-10">
                 <motion.div
                   key={currentSlide}
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 4.5, ease: "linear" }}
-                  className="h-full bg-emerald-600"
+                  className="h-full bg-emerald-400"
                 />
               </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex items-center justify-between gap-3 pt-1"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0">
-                      <CurrentSlideIcon size={18} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-serif font-bold text-slate-900">
-                          {slides[currentSlide].term}
-                        </span>
-                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-900/5 border border-emerald-900/10 text-emerald-800 font-semibold tracking-wider uppercase">
-                          {slides[currentSlide].badge}
-                        </span>
+              {/* Card Content Overlay */}
+              <div className="relative z-10 pt-1">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -12 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-start justify-between gap-3"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-500/30 backdrop-blur-md border border-emerald-300/40 flex items-center justify-center text-emerald-200 shrink-0 mt-0.5 shadow-sm">
+                        <CurrentSlideIcon size={18} />
                       </div>
-                      <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
-                        {slides[currentSlide].description}
-                      </p>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base font-serif font-bold text-white drop-shadow-sm">
+                            {slides[currentSlide].term}
+                          </span>
+                          <span className="text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/30 backdrop-blur-md border border-emerald-300/40 text-emerald-200 font-semibold tracking-wider uppercase">
+                            {slides[currentSlide].badge}
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-100 font-normal leading-tight mt-1 max-w-sm drop-shadow-sm">
+                          {slides[currentSlide].description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <span className="hidden sm:inline-block text-[10px] font-semibold text-slate-400 tracking-widest shrink-0">
-                    0{currentSlide + 1}/0{slides.length}
-                  </span>
-                </motion.div>
-              </AnimatePresence>
+                    <span className="hidden sm:inline-block text-[10px] font-semibold text-slate-200 tracking-widest shrink-0 drop-shadow-xs">
+                      0{currentSlide + 1}/0{slides.length}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-              {/* Navigation Indicators */}
-              <div className="flex items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-100">
+              {/* Navigation Indicators / Dots */}
+              <div className="relative z-10 flex items-center gap-1.5 pt-3 border-t border-white/20 mt-3">
                 {slides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
                     className={`h-1 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "w-5 bg-emerald-700" : "w-1.5 bg-slate-200"
+                      currentSlide === index ? "w-5 bg-emerald-400 shadow-sm" : "w-1.5 bg-white/40"
                     }`}
                   />
                 ))}
@@ -297,7 +322,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT COLUMN: Compact Visual Showcase */}
+          {/* RIGHT COLUMN: Visual Showcase with family.png */}
           <div className="lg:col-span-6 relative">
             <motion.div
               style={{ rotateX, rotateY }}
@@ -306,11 +331,11 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="relative rounded-2xl p-2 bg-white/80 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/10 group"
             >
-              {/* Image Frame */}
+              {/* Image Frame with family.png */}
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 max-h-[380px]">
                 <img
-                  src="/hero.png"
-                  alt="Financial advisor planning wealth growth"
+                  src="/family.png"
+                  alt="Family wealth planning"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 
