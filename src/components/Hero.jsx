@@ -135,14 +135,13 @@ export default function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-800">
-            Credible Mutual Fund Advisory & Wealth Planning
-          </span>
+            Your credible partner for mutual fund investing          </span>
           <ChevronRight size={13} className="text-slate-400" />
         </motion.div>
 
         {/* 2-Column Grid */}
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-          
+
           {/* LEFT COLUMN: Headlines, Dynamic Dynamic Background Slider, CTAs & Metrics */}
           <div className="lg:col-span-6 space-y-4 lg:space-y-5">
             <motion.h1
@@ -250,9 +249,8 @@ export default function Hero() {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "w-5 bg-emerald-400 shadow-sm" : "w-1.5 bg-white/40"
-                    }`}
+                    className={`h-1 rounded-full transition-all duration-300 ${currentSlide === index ? "w-5 bg-emerald-400 shadow-sm" : "w-1.5 bg-white/40"
+                      }`}
                   />
                 ))}
               </div>
@@ -338,7 +336,7 @@ export default function Hero() {
                   alt="Family wealth planning"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                
+
                 {/* Contrast Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent" />
 
@@ -346,7 +344,7 @@ export default function Hero() {
                 <div className="absolute top-3 left-3">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-medium">
                     <Sparkles size={11} className="text-emerald-400" />
-                    <span>Daisen Advisory</span>
+                    <span>Daisen Wealth Partnrs</span>
                   </div>
                 </div>
 
@@ -377,17 +375,15 @@ export default function Hero() {
                   <div className="flex bg-slate-100 p-0.5 rounded text-[9px]">
                     <button
                       onClick={() => setActiveTab("growth")}
-                      className={`px-1.5 py-0.5 rounded ${
-                        activeTab === "growth" ? "bg-white text-slate-900 shadow-xs font-semibold" : "text-slate-500"
-                      }`}
+                      className={`px-1.5 py-0.5 rounded ${activeTab === "growth" ? "bg-white text-slate-900 shadow-xs font-semibold" : "text-slate-500"
+                        }`}
                     >
                       Growth
                     </button>
                     <button
                       onClick={() => setActiveTab("balanced")}
-                      className={`px-1.5 py-0.5 rounded ${
-                        activeTab === "balanced" ? "bg-white text-slate-900 shadow-xs font-semibold" : "text-slate-500"
-                      }`}
+                      className={`px-1.5 py-0.5 rounded ${activeTab === "balanced" ? "bg-white text-slate-900 shadow-xs font-semibold" : "text-slate-500"
+                        }`}
                     >
                       Balanced
                     </button>
