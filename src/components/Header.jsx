@@ -77,7 +77,7 @@ export default function Header() {
           {/* Action Button & Trust Badge */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="https://wa.me/918301808509" target="_blank" rel="noopener noreferrer"
+              href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details." target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-slate-900 hover:bg-emerald-950 text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-md shadow-slate-900/10 hover:shadow-emerald-950/20 transition-all duration-200 transform hover:-translate-y-0.5"
             >
               <span>Book Consultation</span>
@@ -119,7 +119,7 @@ export default function Header() {
 
               <div className="pt-3 mt-2 border-t border-slate-200/60 flex flex-col gap-3">
                 <a
-                  href="https://wa.me/918301808509"
+                  href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}

@@ -427,7 +427,7 @@ export default function InvestorHub() {
           <div className="mt-7 flex flex-wrap justify-center gap-3">
 
             <a
-              href="https://wa.me/918301808509"
+              href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
               className="inline-flex items-center gap-2 rounded-xl bg-[#071A2B] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#102c42] transition"
             >
               <span>Contact Us</span>
@@ -435,7 +435,7 @@ export default function InvestorHub() {
             </a>
 
             <a
-              href="https://wa.me/918301808509"
+              href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-[#071A2B]/15 bg-white/50 px-6 py-3.5 text-sm font-semibold text-[#071A2B] hover:bg-white transition"

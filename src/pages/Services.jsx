@@ -193,7 +193,7 @@ export default function Services() {
 
                 {/* Interactive Action Link */}
                 <a
-                  href="https://wa.me/918301808509?text=Hello%2C%20I%20would%20like%20to%20know%20more."
+                  href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors"
@@ -235,7 +235,7 @@ export default function Services() {
           </div>
 
           <a
-            href="https://wa.me/918301808509" target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details." target="_blank" rel="noopener noreferrer"
             className="relative z-10 shrink-0 inline-flex items-center gap-3 bg-emerald-800 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-300 shadow-xl shadow-emerald-950/40"
           >
             <span>Book Free Consultation</span>

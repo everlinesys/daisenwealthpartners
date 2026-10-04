@@ -8,7 +8,7 @@ export default function Contact() {
   const openWhatsApp = (event) => {
     event.preventDefault();
     const text = [
-      "Hello Daisen Wealth Partners,",
+      "I would like to know more about your services. Please share the details.",
       form.name && `Name: ${form.name}`,
       form.email && `Email: ${form.email}`,
       form.phone && `Phone: ${form.phone}`,
@@ -51,7 +51,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://wa.me/918301808509"
+                href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
                 target="_blank"
                 rel="noreferrer"
                 className="block text-[#C9A86A]"
@@ -62,7 +62,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://wa.me/918301808509"
+              href="https://wa.me/918301808509?text=I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20share%20the%20details."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center rounded-full bg-[#25D366] px-7 py-3.5 font-semibold text-white transition hover:scale-[1.02] hover:bg-[#20bd5a]"
